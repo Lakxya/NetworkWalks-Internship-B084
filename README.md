@@ -1,0 +1,52 @@
+# NetworkWalks Internship – B084
+
+Welcome to my **NetworkWalks Internship** repository.
+
+This repository documents my weekly internship assignments, practical implementations, technical experiments, troubleshooting procedures, and learnings related to networking, Linux, cybersecurity, and system administration.
+
+## Repository Structure
+
+| Week | Project | Description |
+|---|---|---|
+| Week 01 | Android-x86 Networking Lab | Android-x86 installation in VirtualBox, NAT Network configuration, Kali Linux connectivity, routing and DNS troubleshooting |
+| Week 01 | Windows 10 VirtualBox Lab | Virtual machine setup and configuration |
+| Week 01 | Wireshark SOC Project (Extra) | Additional practical project |
+
+## Technologies & Tools
+
+- Kali Linux
+- Android-x86
+- Oracle VirtualBox
+- Windows 10
+- Linux Networking
+- TCP/IP
+- ICMP
+- DNS
+- ARP
+- Wireshark
+- tcpdump
+
+## Documentation Approach
+
+Each practical is documented with:
+
+- Assignment objectives and environment setup.
+- Step-by-step implementation.
+- Commands and configurations used.
+- Screenshots demonstrating practical work.
+- Troubleshooting and debugging procedures.
+- Final verification and results.
+- Key technical learnings.
+
+## Objective
+
+To develop practical skills in computer networking, Linux administration, cybersecurity, network troubleshooting, and infrastructure technologies through hands-on internship assignments.
+
+I will continue updating this repository as I progress through the internship.
+
+---
+
+<p align="center">
+  **NetworkWalks Internship | B084**  
+  <i>Learn by doing. Document every step. Build practical skills.</i>
+</p>
