@@ -162,7 +162,7 @@ Downloaded the 64-bit Android-x86 9.0-r2 ISO image.
 
 Official website: https://www.android-x86.org/
 
-![Android ISO Download](Screenshots/06-download-android-x86_64-9.0-r2.iso.png)
+![Android ISO Download](Screenshots/06-download%20android-x86_64-9.0-r2.iso.png)
 
 ### Step 06 – Install Android-x86 in VirtualBox
 
@@ -221,7 +221,7 @@ ip -br addr
 ip route
 ```
 
-![Android IP Configuration](Screenshots/08-android%20ip%20-br%20addr.png)
+![Android IP Configuration](Screenshots/08-android%20%20ip%20-br%20addr.png)
 
 ---
 
