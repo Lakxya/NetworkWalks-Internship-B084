@@ -1,4 +1,4 @@
-# WK1-PMx – Week1 Extra Projects - How to setup Windows 10 in VirtualBox
+# WK1-PMx – Windows 10 VirtualBox Setup & Network Connectivity Lab
 
 ![VirtualBox](https://img.shields.io/badge/Virtualization-Oracle%20VirtualBox-blue)
 ![OS](https://img.shields.io/badge/OS-Windows%2010%20%7C%20Kali%20Linux-informational)
