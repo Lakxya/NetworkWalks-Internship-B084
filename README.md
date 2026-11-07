@@ -1,52 +1,64 @@
 # NetworkWalks Internship – B084
 
+<p align="center">
+  <img src="https://img.shields.io/badge/Internship-NetworkWalks-blue?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Intern-B084-purple?style=for-the-badge" />
+</p>
+
 Welcome to my **NetworkWalks Internship** repository.
 
-This repository documents my weekly internship assignments, practical implementations, technical experiments, troubleshooting procedures, and learnings related to networking, Linux, cybersecurity, and system administration.
+This repository serves as a record of my internship journey, documenting weekly assignments, hands-on practical implementations, technical experiments, troubleshooting, and learning progress.
+
+Each assignment is organized into dedicated folders containing detailed documentation, implementation steps, screenshots, and practical results.
+
+---
+
+## Internship Progress
+
+| Week | Project | Status |
+|---|---|---|
+| Week 01 | [Android-x86 Networking Lab](./week-01/WK1-PMx%20-%20How%20to%20setup%20Android-x86%20in%20VirtualBox/) | Completed |
+| Week 01 | [Windows 10 VirtualBox Lab](./week-01/WK1-PMx%20-%20How%20to%20setup%20Windows%2010%20in%20VirtualBox/) | Completed |
+
+---
 
 ## Repository Structure
 
-| Week | Project | Description |
-|---|---|---|
-| Week 01 | Android-x86 Networking Lab | Android-x86 installation in VirtualBox, NAT Network configuration, Kali Linux connectivity, routing and DNS troubleshooting |
-| Week 01 | Windows 10 VirtualBox Lab | Virtual machine setup and configuration |
-| Week 01 | Wireshark SOC Project (Extra) | Additional practical project |
+```text
+Networkwalks/
+│
+├── week-01/
+│   ├── Android-x86 Networking Lab/
+│   ├── Windows 10 VirtualBox Lab/
+│   └── README.md
+│
+└── README.md
+```
 
-## Technologies & Tools
+---
 
-- Kali Linux
-- Android-x86
-- Oracle VirtualBox
-- Windows 10
-- Linux Networking
-- TCP/IP
-- ICMP
-- DNS
-- ARP
-- Wireshark
-- tcpdump
+## Documentation
 
-## Documentation Approach
+Every practical is documented with:
 
-Each practical is documented with:
-
-- Assignment objectives and environment setup.
+- Objectives and requirements.
 - Step-by-step implementation.
-- Commands and configurations used.
-- Screenshots demonstrating practical work.
-- Troubleshooting and debugging procedures.
-- Final verification and results.
-- Key technical learnings.
+- Commands and configurations.
+- Screenshots and supporting evidence.
+- Troubleshooting procedures.
+- Final results and learnings.
 
-## Objective
+---
 
-To develop practical skills in computer networking, Linux administration, cybersecurity, network troubleshooting, and infrastructure technologies through hands-on internship assignments.
+## About This Repository
 
-I will continue updating this repository as I progress through the internship.
+The purpose of this repository is to maintain a structured record of my internship work, demonstrate practical implementation, and track my technical growth throughout the internship.
+
+New assignments, weekly progress, and completed practicals will be added as the internship continues.
 
 ---
 
 <p align="center">
-  **NetworkWalks Internship | B084**  
-  <i>Learn by doing. Document every step. Build practical skills.</i>
+  <b>NetworkWalks Internship | B084</b><br/>
+  <i>Learn. Implement. Troubleshoot. Document.</i>
 </p>
