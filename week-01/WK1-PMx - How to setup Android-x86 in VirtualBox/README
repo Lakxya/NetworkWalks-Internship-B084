@@ -1,0 +1,932 @@
+# WK1-PMx – Android-x86 Networking Lab Using VirtualBox
+
+**Organization:** Networkwalks  
+**Week:** Week 01 – Extra Project  
+**Practical:** Android-x86 Setup and Network Connectivity  
+**Hypervisor:** Oracle VirtualBox  
+**Operating Systems:** Android-x86 9.0-r2 and Kali Linux
+
+---
+
+# 1. Objective
+
+The objective of this practical is to install Android-x86 inside Oracle VirtualBox, connect it to the same NAT Network as Kali Linux, configure static IP addressing, and establish communication between both virtual machines and the internet.
+
+The practical also covers network troubleshooting using Linux networking utilities, ARP, ICMP, tcpdump, iptables and policy routing.
+
+### Learning objectives
+
+- Install Android-x86 in VirtualBox.
+- Configure virtual machine hardware and storage.
+- Configure VirtualBox NAT Network.
+- Configure static IPv4 addresses.
+- Configure gateway and DNS.
+- Establish communication between Android and Kali.
+- Investigate ARP and routing tables.
+- Analyze ICMP packets.
+- Troubleshoot firewall rules.
+- Configure policy routing.
+- Verify internet connectivity.
+- Verify DNS hostname resolution.
+
+# 2. Lab Requirements
+
+| Component | Requirement |
+|---|---|
+| Hypervisor | Oracle VirtualBox |
+| Existing VM | Kali Linux |
+| Android ISO | Android-x86 9.0-r2 |
+| RAM | Minimum 2 GB for Android VM |
+| Storage | Minimum 10 GB |
+| Network | VirtualBox NAT Network |
+| Terminal | Android Terminal Emulator |
+| Packet analysis | tcpdump |
+| Firewall utility | iptables |
+
+# 3. Network Configuration
+
+Both virtual machines must be connected to the same NAT Network.
+
+| Configuration | Kali Linux | Android-x86 |
+|---|---|---|
+| IPv4 address | 10.0.0.2 | 10.0.0.9 |
+| Subnet mask | 255.255.255.0 | 255.255.255.0 |
+| Interface | eth0 | wifi_eth |
+| Gateway | 10.0.0.1 | 10.0.0.1 |
+| DNS | 8.8.8.8 | 8.8.8.8 |
+
+Network CIDR: `10.0.0.0/24`
+
+## Network architecture
+
+```text
+                   INTERNET
+                       |
+                VirtualBox NAT
+                    Gateway
+                  10.0.0.1
+                       |
+              NAT Network 10.0.0.0/24
+                       |
+               +-------+-------+
+               |               |
+           Kali Linux       Android-x86
+           10.0.0.2          10.0.0.9
+             eth0             wifi_eth
+               |               |
+               +-------+-------+
+                       |
+                Network Testing
+                ARP / ICMP / DNS
+```
+
+# PART A – INSTALLATION
+
+# 4. Step 1: Download Android-x86 ISO
+
+Download Android-x86 9.0-r2 from the official project website.
+
+Website:
+
+https://www.android-x86.org/
+
+Select:
+
+`android-x86_64-9.0-r2.iso`
+
+This is the 64-bit ISO used for the practical.
+
+Save the ISO somewhere accessible.
+
+**Screenshot:** `Screenshots/01-iso-download.png`
+
+# 5. Step 2: Create Android Virtual Machine
+
+Open Oracle VirtualBox.
+
+Select New and configure:
+
+| Setting | Value |
+|---|---|
+| Name | Android9-Lab |
+| Type | Linux |
+| Version | Other Linux (64-bit) |
+| RAM | 2048 MB |
+| Disk type | VDI |
+| Allocation | Dynamically allocated |
+| Disk size | 10 GB or more |
+
+Create the virtual machine.
+
+**Screenshot:** `Screenshots/03-vm-creation.png`
+
+# 6. Step 3: Attach ISO and Install Android
+
+Open:
+
+`VirtualBox → Android9-Lab → Settings → Storage`
+
+Attach the downloaded Android-x86 ISO.
+
+Open Display settings:
+
+- Video Memory: 128 MB.
+- Graphics Controller: VBoxVGA.
+- Enable 3D acceleration if compatible with the VM.
+
+Start Android9-Lab.
+
+At the boot menu select:
+
+`Installation - Install Android-x86 to harddisk`
+
+Follow the installation process:
+
+1. Select Create/Modify partitions.
+2. Create a partition on the virtual disk.
+3. Select the partition.
+4. Choose ext4 filesystem.
+5. Confirm formatting.
+6. Install GRUB.
+7. Select Yes when asked to make the installation read-write.
+8. Wait for installation to finish.
+9. Reboot the VM.
+
+If the VM boots into the installer again, remove the ISO from the virtual optical drive.
+
+**Screenshots:**
+
+- `Screenshots/04-android-boot.png`
+- `Screenshots/05-android-installation.png`
+- `Screenshots/06-android-first-boot.png`
+
+# PART B – VIRTUAL NETWORK CONFIGURATION
+
+# 7. Step 4: Configure VirtualBox NAT Network
+
+Open:
+
+`VirtualBox → Tools → Network Manager → NAT Networks`
+
+Create or select the NAT Network used by Kali.
+
+Example:
+
+`Internship-Networkwalk`
+
+Configure:
+
+| Setting | Value |
+|---|---|
+| IPv4 Prefix | 10.0.0.0/24 |
+| DHCP Server | Disabled |
+| Gateway | 10.0.0.1 |
+
+DHCP was disabled during this practical because we used manually assigned static IP addresses.
+
+Important: If using DHCP instead, ensure that its address pool does not conflict with the manually assigned addresses.
+
+## Configure Kali adapter
+
+Open:
+
+`Kali VM → Settings → Network → Adapter 1`
+
+Set:
+
+- Enable Network Adapter.
+- Attached to: NAT Network.
+- Name: Internship-Networkwalk.
+
+## Configure Android adapter
+
+Open:
+
+`Android9-Lab → Settings → Network → Adapter 1`
+
+Set:
+
+- Enable Network Adapter.
+- Attached to: NAT Network.
+- Name: Internship-Networkwalk.
+
+Both machines must use exactly the same NAT Network.
+
+**Screenshots:**
+
+- `Screenshots/02-nat-network.png`
+- `Screenshots/10-virtualbox-adapters.png`
+
+# 8. Step 5: Complete Android Initial Setup
+
+Start Android9-Lab.
+
+Complete the initial Android setup:
+
+1. Select language.
+2. Start Android.
+3. Skip Wi-Fi configuration if necessary.
+4. Open the Android desktop.
+5. Open the application launcher.
+
+Open Terminal Emulator.
+
+**Screenshots:**
+
+- `Screenshots/07-android-setup.png`
+- `Screenshots/08-android-wifi.png`
+
+# PART C – ANDROID NETWORK CONFIGURATION
+
+# 9. Step 6: Obtain Android Root Access
+
+Open Terminal Emulator.
+
+Execute:
+
+```bash
+su
+```
+
+Allow the superuser request.
+
+Verify that the prompt changes to:
+
+```text
+/ #
+```
+
+Identify the network interface:
+
+```bash
+ip -br addr
+```
+
+Our Android interface:
+
+`wifi_eth`
+
+Note: Interface names may differ between Android-x86 builds.
+
+**Screenshot:** `Screenshots/09-android-terminal.png`
+
+# 10. Step 7: Configure Android Static IP
+
+Execute these commands in Android's root terminal.
+
+### Remove existing IP configuration
+
+```bash
+ip addr flush dev wifi_eth
+```
+
+### Assign static IPv4 address
+
+```bash
+ip addr add 10.0.0.9/24 dev wifi_eth
+```
+
+### Activate the interface
+
+```bash
+ip link set wifi_eth up
+```
+
+### Configure default gateway
+
+```bash
+ip route replace default via 10.0.0.1 dev wifi_eth
+```
+
+### Configure DNS
+
+```bash
+setprop net.dns1 8.8.8.8
+```
+
+### Verify IP configuration
+
+```bash
+ip -br addr
+```
+
+Expected:
+
+```text
+wifi_eth UP 10.0.0.9/24
+```
+
+Verify routing:
+
+```bash
+ip route
+```
+
+Expected:
+
+```text
+default via 10.0.0.1 dev wifi_eth
+10.0.0.0/24 dev wifi_eth
+```
+
+**Screenshot:** `Screenshots/11-android-ip.png`
+
+# PART D – KALI LINUX CONFIGURATION
+
+# 11. Step 8: Verify Kali Network Interface
+
+Open Kali Linux terminal.
+
+Check interfaces:
+
+```bash
+ip -br addr
+```
+
+Our interface:
+
+`eth0`
+
+Check NetworkManager:
+
+```bash
+nmcli device status
+```
+
+Activate the existing wired connection:
+
+```bash
+sudo nmcli connection up "Wired connection 1"
+```
+
+If the connection is not configured with the required static IP, configure its IPv4 settings through NetworkManager:
+
+| Setting | Value |
+|---|---|
+| IPv4 Method | Manual |
+| Address | 10.0.0.2/24 |
+| Gateway | 10.0.0.1 |
+| DNS | 8.8.8.8 |
+
+Verify:
+
+```bash
+ip -br addr
+```
+
+Expected:
+
+```text
+eth0 UP 10.0.0.2/24
+```
+
+Check routing:
+
+```bash
+ip route
+```
+
+Expected:
+
+```text
+default via 10.0.0.1 dev eth0
+10.0.0.0/24 dev eth0
+```
+
+**Screenshot:** `Screenshots/12-kali-ip.png`
+
+# PART E – CONNECTIVITY TESTING
+
+# 12. Step 9: Test Android-to-Kali Communication
+
+On Android:
+
+```bash
+ping -c 4 10.0.0.2
+```
+
+Expected:
+
+```text
+4 packets transmitted
+4 received
+0% packet loss
+```
+
+This verifies communication from Android to Kali.
+
+# 13. Step 10: Test Kali-to-Android Communication
+
+On Kali:
+
+```bash
+ping -c 4 10.0.0.9
+```
+
+Expected:
+
+```text
+4 packets transmitted
+4 received
+0% packet loss
+```
+
+This verifies communication from Kali to Android.
+
+**Screenshot:** `Screenshots/13-initial-connectivity.png`
+
+# PART F – TROUBLESHOOTING
+
+The following steps document the troubleshooting process used in this practical.
+
+They are important because the initial network configuration did not provide reliable communication in both directions.
+
+# 14. Step 11: Investigate ARP and Neighbor Tables
+
+On Kali:
+
+```bash
+ip neigh show 10.0.0.9
+```
+
+On Android:
+
+```bash
+ip neigh show 10.0.0.2
+```
+
+Inspect neighbor states:
+
+- REACHABLE
+- STALE
+- FAILED
+
+STALE does not automatically mean the device is disconnected. It means the cached neighbor entry needs reconfirmation.
+
+Flush the Android neighbor cache when necessary:
+
+```bash
+ip neigh flush dev wifi_eth
+```
+
+Inspect it again:
+
+```bash
+ip neigh show
+```
+
+**Screenshot:** `Screenshots/14-arp-routing.png`
+
+# 15. Step 12: Investigate Routing Tables
+
+On Android:
+
+```bash
+ip route show table all
+```
+
+Inspect policy routing:
+
+```bash
+ip rule show
+```
+
+Check the main routing table:
+
+```bash
+ip route show table main
+```
+
+Check the default route:
+
+```bash
+ip route show default
+```
+
+These commands help identify incorrect gateways, missing routes and policy-routing conflicts.
+
+# 16. Step 13: Investigate ICMP Configuration
+
+Check whether Android ignores ICMP Echo Requests:
+
+```bash
+cat /proc/sys/net/ipv4/icmp_echo_ignore_all
+```
+
+Our observed value:
+
+```text
+0
+```
+
+This means ICMP Echo Requests are not being ignored through this kernel setting.
+
+To explicitly set it to zero:
+
+```bash
+sysctl -w net.ipv4.icmp_echo_ignore_all=0
+```
+
+Investigate reverse path filtering:
+
+```bash
+sysctl net.ipv4.conf.all.rp_filter
+
+sysctl net.ipv4.conf.wifi_eth.rp_filter
+```
+
+During the practical, both returned zero.
+
+# 17. Step 14: Capture ICMP Traffic Using tcpdump
+
+On Android, run:
+
+```bash
+tcpdump -ni wifi_eth icmp
+```
+
+If tcpdump is unavailable, use another available packet capture environment, such as Kali. Do not assume it is installed on Android.
+
+On Kali:
+
+```bash
+ping -c 4 10.0.0.9
+```
+
+Inspect the captured packets.
+
+Example:
+
+```text
+10.0.0.2 > 10.0.0.9: ICMP echo request
+```
+
+This confirms that ICMP requests are arriving at Android.
+
+If Echo Replies are absent, investigate firewall and routing behavior.
+
+**Screenshot:** `Screenshots/15-tcpdump.png`
+
+# 18. Step 15: Investigate Android Firewall
+
+On Android root terminal:
+
+Inspect INPUT:
+
+```bash
+iptables -L INPUT -n -v --line-numbers
+```
+
+Inspect OUTPUT:
+
+```bash
+iptables -L OUTPUT -n -v --line-numbers
+```
+
+Inspect raw table:
+
+```bash
+iptables -t raw -L -n -v --line-numbers
+```
+
+During the lab, the following firewall changes were performed:
+
+```bash
+iptables -F
+
+iptables -P INPUT ACCEPT
+
+iptables -P OUTPUT ACCEPT
+```
+
+Explicitly allow ICMP:
+
+```bash
+iptables -I INPUT 1 -p icmp -j ACCEPT
+```
+
+Check ICMP configuration again:
+
+```bash
+sysctl -w net.ipv4.icmp_echo_ignore_all=0
+```
+
+These were lab troubleshooting changes, not a recommended permanent security configuration.
+
+**Security warning:** Flushing firewall rules and setting permissive policies reduces firewall protection. Use these commands only in an isolated lab and restore appropriate firewall protection afterward.
+
+**Screenshot:** `Screenshots/16-firewall.png`
+
+# 19. Step 16: Investigate Policy Routing
+
+During the initial troubleshooting, the following policy rules were tested:
+
+```bash
+ip rule add to 10.0.0.0/24 table main priority 50
+```
+
+```bash
+ip rule add from all iif wifi_eth table main priority 60
+```
+
+Inspect:
+
+```bash
+ip rule show
+```
+
+These rules were experiments to influence which routing table was used for matching traffic.
+
+The final working routing configuration was established separately in the next section.
+
+# PART G – FINAL WORKING CONFIGURATION
+
+# 20. Step 17: Apply Android Routing Recovery Configuration
+
+This is the most important recovery section.
+
+If Android loses connectivity after rebooting or its routing configuration becomes incorrect, open Terminal Emulator and obtain root:
+
+```bash
+su
+```
+
+Verify the interface:
+
+```bash
+ip -br addr
+```
+
+Ensure the interface is `wifi_eth`.
+
+### Command 1: Reconfigure Android IP
+
+```bash
+ip addr flush dev wifi_eth
+
+ip addr add 10.0.0.9/24 dev wifi_eth
+
+ip link set wifi_eth up
+```
+
+### Command 2: Remove the existing default route
+
+```bash
+ip route del default
+```
+
+If no default route exists, that command may report an error. Continue after checking the routing table.
+
+### Command 3: Add the correct VirtualBox gateway
+
+```bash
+ip route add default via 10.0.0.1 dev wifi_eth
+```
+
+### Command 4: Remove existing main-table policy rules
+
+```bash
+ip rule del table main 2>/dev/null
+```
+
+### Command 5: Add the main routing table lookup rule
+
+```bash
+ip rule add from all lookup main pref 100
+```
+
+### Command 6: Configure DNS
+
+```bash
+setprop net.dns1 8.8.8.8
+```
+
+### Command 7: Verify routing
+
+```bash
+ip route show
+
+ip rule show
+
+ip -br addr
+```
+
+Expected important entries:
+
+```text
+default via 10.0.0.1 dev wifi_eth
+
+10.0.0.0/24 dev wifi_eth
+```
+
+The final policy rule should include:
+
+```text
+100: from all lookup main
+```
+
+Note: `ip rule del table main` removes existing rules that look up the main table. It can change other routing behavior, so inspect `ip rule show` first and use this recovery procedure only in this lab configuration.
+
+**Screenshot:** `Screenshots/17-policy-routing.png`
+
+# 21. Step 18: Verify Android-to-Kali Communication
+
+On Android:
+
+```bash
+ping -I wifi_eth -c 4 10.0.0.2
+```
+
+Expected:
+
+```text
+4 packets transmitted
+4 received
+0% packet loss
+```
+
+# 22. Step 19: Verify Kali-to-Android Communication
+
+On Kali:
+
+```bash
+ping -I eth0 -c 4 10.0.0.9
+```
+
+Expected:
+
+```text
+4 packets transmitted
+4 received
+0% packet loss
+```
+
+Both machines should now communicate successfully.
+
+**Screenshot:** `Screenshots/18-final-ping.png`
+
+# 23. Step 20: Test Android Internet Connectivity
+
+On Android:
+
+First test the public IP:
+
+```bash
+ping -c 4 8.8.8.8
+```
+
+Expected:
+
+```text
+4 packets transmitted
+4 received
+0% packet loss
+```
+
+This confirms IP connectivity to the public DNS server.
+
+**Screenshot:** `Screenshots/19-android-internet.png`
+
+# 24. Step 21: Test Kali Internet Connectivity
+
+On Kali:
+
+```bash
+ping -I eth0 -c 4 8.8.8.8
+```
+
+Expected:
+
+```text
+4 packets transmitted
+4 received
+0% packet loss
+```
+
+**Screenshot:** `Screenshots/20-kali-internet.png`
+
+# 25. Step 22: Verify Android DNS Resolution
+
+On Android:
+
+```bash
+ping -c 3 google.com
+```
+
+Expected:
+
+```text
+PING google.com (resolved-ip)
+
+3 packets transmitted
+3 received
+0% packet loss
+```
+
+This confirms hostname resolution and ICMP connectivity.
+
+**Screenshot:** `Screenshots/21-android-dns.png`
+
+# 26. Step 23: Verify Kali DNS Resolution
+
+On Kali:
+
+```bash
+ping -I eth0 -c 4 google.com
+```
+
+Expected:
+
+```text
+PING google.com (resolved-ip)
+
+4 packets transmitted
+4 received
+0% packet loss
+```
+
+This confirms DNS resolution and internet connectivity from Kali.
+
+**Screenshot:** `Screenshots/22-kali-dns.png`
+
+# PART H – FINAL VERIFICATION
+
+# 27. Final Connectivity Checklist
+
+| Test | Expected result |
+|---|---|
+| Android IP configuration | 10.0.0.9/24 |
+| Kali IP configuration | 10.0.0.2/24 |
+| Android default gateway | 10.0.0.1 |
+| Kali default gateway | 10.0.0.1 |
+| Android → Kali | Successful |
+| Kali → Android | Successful |
+| Android → 8.8.8.8 | Successful |
+| Kali → 8.8.8.8 | Successful |
+| Android → google.com | Successful |
+| Kali → google.com | Successful |
+
+# 28. Troubleshooting Reference
+
+| Problem | Investigation |
+|---|---|
+| Interface is DOWN | `ip link show` |
+| Incorrect IP address | `ip -br addr` |
+| Incorrect gateway | `ip route` |
+| Neighbor is STALE | `ip neigh show` |
+| Ping requests arrive but replies are missing | tcpdump and iptables |
+| ICMP Echo ignored | `cat /proc/sys/net/ipv4/icmp_echo_ignore_all` |
+| Routing problems | `ip route show table all` |
+| Policy-routing problems | `ip rule show` |
+| Public IP works but hostname fails | DNS configuration |
+
+# 29. Important Notes for Repeating This Practical
+
+1. Both VMs must be connected to the same NAT Network.
+2. Keep the IP addresses unique.
+3. If DHCP is disabled, configure static IP addresses manually.
+4. Android interface name in this lab is `wifi_eth`.
+5. Kali interface name in this lab is `eth0`.
+6. Android root commands must be executed after `su`.
+7. The Android IP, routes, policy rules and firewall modifications made through the terminal may not persist after reboot.
+8. Verify the configuration instead of assuming it has persisted.
+9. The routing recovery commands documented above reproduce the configuration used in this lab; do not apply them blindly to other networks.
+10. Avoid leaving permissive firewall settings enabled outside the isolated practical.
+
+# 30. Learning Outcomes
+
+Through this practical, I gained hands-on experience with:
+
+- VirtualBox virtualization.
+- Android-x86 installation.
+- NAT Network configuration.
+- Static IP addressing.
+- Linux network interfaces.
+- ARP and neighbor discovery.
+- IPv4 routing tables.
+- Policy routing.
+- ICMP protocol.
+- tcpdump packet capture.
+- iptables firewall investigation.
+- DNS resolution.
+- Network troubleshooting.
+
+# 31. Conclusion
+
+The practical involved installing Android-x86 9.0-r2 in Oracle VirtualBox and connecting it to Kali Linux through a shared NAT Network.
+
+Initially, communication between the machines was inconsistent. I investigated IP addressing, ARP, routing, ICMP, packet captures and firewall rules.
+
+After experimenting with the routing and firewall configurations, I established successful bidirectional communication between the two virtual machines.
+
+I also corrected Android's default routing and policy-routing configuration, allowing it to access the internet.
+
+Finally, both Android and Kali successfully reached 8.8.8.8 and resolved google.com.
+
+This practical provided hands-on experience in virtual networking, Linux networking, routing, packet analysis, firewall troubleshooting and DNS.
+
+---
+
+**Project:** Networkwalks – Week 01 Extra Project  
+**Practical:** WK1-PMx – Android-x86 in VirtualBox  
+**Status:** Completed
