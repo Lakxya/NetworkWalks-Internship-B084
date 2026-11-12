@@ -54,7 +54,11 @@ All practical activities were documented with commands, observations, results, a
 - Identified ModSecurity (SpiderLabs).
 - Enumerated publicly available DNS records.
 
+<<<<<<< HEAD
 **Project Documentation:** [View PM1 README](./PM1%20-%20Footprinting%20with%20multiple%20Kali%20tools/README.md)
+=======
+**Project Documentation:** [View PM1 README](./PM1%20–%20Footprinting%20with%20multiple%20Kali%20tools/README.md)
+>>>>>>> 9b6c03f (completed week 2.)
 
 ---
 
@@ -70,7 +74,11 @@ All practical activities were documented with commands, observations, results, a
 - Nmap
 - Windows Command Prompt
 - ipconfig
+<<<<<<< HEAD
 
+=======
+d
+>>>>>>> 9b6c03f (completed week 2.)
 **Key Findings:**
 
 | Parameter                  | Result          |
@@ -92,10 +100,14 @@ All practical activities were documented with commands, observations, results, a
 - Examined gateway operating system information.
 - Generated and exported network topology.
 
+<<<<<<< HEAD
 **Project Documentation:** [View PM5 README](./PM5%20-%20Network%20scanning%20with%20Zenmap/README.md)
 
 **Network Topology:**
 
+=======
+**Project Documentation:** [View PM5 README](./PM5%20–%20Network%20scanning%20with%20Zenmap/README.md)
+>>>>>>> 9b6c03f (completed week 2.)
 
 
 ---

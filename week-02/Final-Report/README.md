@@ -106,7 +106,11 @@ Domain registration information can help security professionals understand the d
 
 **Evidence:**
 
+<<<<<<< HEAD
 ![WHOIS Results](../PM1%20-%20Footprinting%20with%20multiple%20Kali%20tools/Screenshots/01-whois%20networkwalks.png)
+=======
+![WHOIS Results](../PM1%20–%20Footprinting%20with%20multiple%20Kali%20tools/Screenshots/01-whois%20networkwalks.png)
+>>>>>>> 9b6c03f (completed week 2.)
 
 ### 4.1.2 WhatWeb – Website Technology Fingerprinting
 
@@ -136,7 +140,11 @@ Technology fingerprinting can help security professionals identify software comp
 
 **Evidence:**
 
+<<<<<<< HEAD
 ![WhatWeb Results](../PM1%20-%20Footprinting%20with%20multiple%20Kali%20tools/Screenshots/02-whatweb%20networkwalks.png)
+=======
+![WhatWeb Results](../PM1%20–%20Footprinting%20with%20multiple%20Kali%20tools/Screenshots/02-whatweb%20networkwalks.png)
+>>>>>>> 9b6c03f (completed week 2.)
 
 ### 4.1.3 Nslookup – DNS Resolution
 
@@ -164,7 +172,11 @@ DNS resolution helps identify the IP address associated with a domain and provid
 
 **Evidence:**
 
+<<<<<<< HEAD
 ![Nslookup Results](../PM1%20-%20Footprinting%20with%20multiple%20Kali%20tools/Screenshots/03-nslookup%20networkwalks.png)
+=======
+![Nslookup Results](../PM1%20–%20Footprinting%20with%20multiple%20Kali%20tools/Screenshots/03-nslookup%20networkwalks.png)
+>>>>>>> 9b6c03f (completed week 2.)
 
 ### 4.1.4 cURL – HTTP Response Header Inspection
 
@@ -193,7 +205,11 @@ HTTP response headers provide useful information about server configuration and 
 
 **Evidence:**
 
+<<<<<<< HEAD
 ![cURL Results](../PM1%20-%20Footprinting%20with%20multiple%20Kali%20tools/Screenshots/04-curl%20networkwalks.png)
+=======
+![cURL Results](../PM1%20–%20Footprinting%20with%20multiple%20Kali%20tools/Screenshots/04-curl%20networkwalks.png)
+>>>>>>> 9b6c03f (completed week 2.)
 
 ### 4.1.5 Wafw00f – Web Application Firewall Detection
 
@@ -221,7 +237,11 @@ Identifying the WAF provides information about the website's security infrastruc
 
 **Evidence:**
 
+<<<<<<< HEAD
 ![Wafw00f Results](../PM1%20-%20Footprinting%20with%20multiple%20Kali%20tools/Screenshots/05-wafw00f%20networkwalks.png)
+=======
+![Wafw00f Results](../PM1%20–%20Footprinting%20with%20multiple%20Kali%20tools/Screenshots/05-wafw00f%20networkwalks.png)
+>>>>>>> 9b6c03f (completed week 2.)
 
 ### 4.1.6 DNSRecon – DNS Enumeration
 
@@ -252,7 +272,11 @@ DNS enumeration helps security professionals understand domain infrastructure, m
 
 **Evidence:**
 
+<<<<<<< HEAD
 ![DNSRecon Results](../PM1%20-%20Footprinting%20with%20multiple%20Kali%20tools/Screenshots/06-dnsrecon%20networkwalks.png)
+=======
+![DNSRecon Results](../PM1%20–%20Footprinting%20with%20multiple%20Kali%20tools/Screenshots/06-dnsrecon%20networkwalks.png)
+>>>>>>> 9b6c03f (completed week 2.)
 
 ---
 
@@ -276,7 +300,11 @@ The Zenmap graphical interface was successfully opened and configured for networ
 
 **Evidence:**
 
+<<<<<<< HEAD
 ![Zenmap Installation](../PM5%20-%20Network%20scanning%20with%20Zenmap/screenshots/01-zenmap-installation.png)
+=======
+![Zenmap Installation](../PM5%20–%20Network%20scanning%20with%20Zenmap/screenshots/01-zenmap-installation.png)
+>>>>>>> 9b6c03f (completed week 2.)
 
 ### 4.2.2 Local IP Address and Network Configuration
 
@@ -321,7 +349,11 @@ Successfully identified the active Wi-Fi network configuration and calculated th
 
 **Evidence:**
 
+<<<<<<< HEAD
 ![IP Configuration](../PM5%20-%20Network%20scanning%20with%20Zenmap/screenshots/02-ipconfig.png)
+=======
+![IP Configuration](../PM5%20–%20Network%20scanning%20with%20Zenmap/screenshots/02-ipconfig.png)
+>>>>>>> 9b6c03f (completed week 2.)
 
 ### 4.2.3 Ping Scan – Live Host Discovery
 
@@ -367,7 +399,11 @@ Successfully discovered seven live hosts on the local Wi-Fi network using the Pi
 
 **Evidence:**
 
+<<<<<<< HEAD
 ![Ping Scan Results](../PM5%20-%20Network%20scanning%20with%20Zenmap/screenshots/03-ping-scan.png)
+=======
+![Ping Scan Results](../PM5%20–%20Network%20scanning%20with%20Zenmap/screenshots/03-ping-scan.png)
+>>>>>>> 9b6c03f (completed week 2.)
 
 ### 4.2.4 Identification of Live Hosts
 
@@ -425,7 +461,11 @@ Successfully inspected host information, identified the gateway's MAC address, a
 
 **Evidence:**
 
+<<<<<<< HEAD
 ![Host Details](../PM5%20-%20Network%20scanning%20with%20Zenmap/screenshots/04-host-details.png)
+=======
+![Host Details](../PM5%20–%20Network%20scanning%20with%20Zenmap/screenshots/04-host-details.png)
+>>>>>>> 9b6c03f (completed week 2.)
 
 ### 4.2.6 Network Topology Generation
 
@@ -452,11 +492,19 @@ Successfully generated and exported a network topology visualization showing the
 
 **Topology Screenshot:**
 
+<<<<<<< HEAD
 ![Zenmap Topology Screenshot](../PM5%20-%20Network%20scanning%20with%20Zenmap/screenshots/05-network-topology.png)
 
 **Exported Topology Graphic:**
 
 ![Exported Network Topology](../PM5%20-%20Network%20scanning%20with%20Zenmap/topology/network-topology.png)
+=======
+![Zenmap Topology Screenshot](../PM5%20–%20Network%20scanning%20with%20Zenmap/screenshots/05-network-topology.png)
+
+**Exported Topology Graphic:**
+
+![Exported Network Topology](../PM5%20–%20Network%20scanning%20with%20Zenmap/topology/network-topology.png)
+>>>>>>> 9b6c03f (completed week 2.)
 
 ---
 
