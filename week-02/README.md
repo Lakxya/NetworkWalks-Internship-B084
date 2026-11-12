@@ -2,11 +2,9 @@
 
 ## Overview
 
-This directory contains the practical assignments, technical documentation, screenshots, and final report completed during Week 02 of my cybersecurity internship at **NetworkWalks**.
+This directory contains the practical assignments, technical documentation, screenshots, and final report completed during Week 02 of my Cybersecurity & Ethical Hacking internship at **NetworkWalks**.
 
-The primary focus of this week was learning and implementing website footprinting, reconnaissance, DNS enumeration, network scanning, host discovery, and network topology visualization.
-
-All practical activities were documented with commands, observations, results, and supporting screenshots.
+The primary focus of this week was website footprinting, reconnaissance, DNS enumeration, network scanning, host discovery, and network topology visualization.
 
 ---
 
@@ -20,7 +18,7 @@ All practical activities were documented with commands, observations, results, a
 - Identify Web Application Firewall technologies.
 - Understand local network configuration and subnetting.
 - Discover active hosts using Nmap and Zenmap.
-- Identify IP addresses and MAC addresses.
+- Identify IP and MAC addresses.
 - Generate and analyze network topology visualizations.
 - Document cybersecurity findings professionally.
 
@@ -30,20 +28,20 @@ All practical activities were documented with commands, observations, results, a
 
 ### 1. PM1 – Footprinting with Multiple Kali Tools
 
-\<badge color="success">Completed\</badge>
+**Status:** Completed
 
-**Objective:** Perform website footprinting and reconnaissance using multiple tools available in Kali Linux.
+**Objective:** Perform website footprinting and reconnaissance using Kali Linux tools.
 
 **Tools Used:**
 
-| Tool     | Purpose                            |
-| -------- | ---------------------------------- |
-| WHOIS    | Domain registration lookup         |
-| WhatWeb  | Website technology fingerprinting  |
-| Nslookup | DNS resolution                     |
-| cURL     | HTTP response header inspection    |
-| Wafw00f  | Web Application Firewall detection |
-| DNSRecon | DNS enumeration                    |
+| Tool | Purpose |
+|---|---|
+| WHOIS | Domain registration lookup |
+| WhatWeb | Website technology fingerprinting |
+| Nslookup | DNS resolution |
+| cURL | HTTP response header inspection |
+| Wafw00f | Web Application Firewall detection |
+| DNSRecon | DNS enumeration |
 
 **Key Findings:**
 
@@ -55,18 +53,22 @@ All practical activities were documented with commands, observations, results, a
 - Enumerated publicly available DNS records.
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 **Project Documentation:** [View PM1 README](./PM1%20-%20Footprinting%20with%20multiple%20Kali%20tools/README.md)
 =======
 **Project Documentation:** [View PM1 README](./PM1%20–%20Footprinting%20with%20multiple%20Kali%20tools/README.md)
 >>>>>>> 9b6c03f (completed week 2.)
+=======
+**Project Documentation:** [View PM1 README](./PM1%20%E2%80%93%20Footprinting%20with%20multiple%20Kali%20tools/README.md)
+>>>>>>> d4a4aac (completedd week 02)
 
 ---
 
 ### 2. PM5 – Network Scanning with Zenmap
 
-\<badge color="success">Completed\</badge>
+**Status:** Completed
 
-**Objective:** Perform network discovery and identify active devices on a local Wi-Fi network using Zenmap.
+**Objective:** Perform network discovery and identify active devices on my local Wi-Fi network using Zenmap.
 
 **Tools Used:**
 
@@ -75,20 +77,24 @@ All practical activities were documented with commands, observations, results, a
 - Windows Command Prompt
 - ipconfig
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 d
 >>>>>>> 9b6c03f (completed week 2.)
+=======
+
+>>>>>>> d4a4aac (completedd week 02)
 **Key Findings:**
 
-| Parameter                  | Result          |
-| -------------------------- | --------------- |
-| Local IPv4 Address         | 192.168.31.164  |
-| Default Gateway            | 192.168.31.1    |
-| Network Subnet             | 192.168.31.0/24 |
-| Total IP Addresses Scanned | 256             |
-| Live Hosts Discovered      | 7               |
-| Scan Duration              | 3.85 seconds    |
+| Parameter | Result |
+|---|---|
+| Local IPv4 Address | 192.168.31.164 |
+| Default Gateway | 192.168.31.1 |
+| Network Subnet | 192.168.31.0/24 |
+| Total IP Addresses Scanned | 256 |
+| Live Hosts Discovered | 7 |
+| Scan Duration | 3.85 seconds |
 
 **Practical Activities:**
 
@@ -101,6 +107,7 @@ d
 - Generated and exported network topology.
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 **Project Documentation:** [View PM5 README](./PM5%20-%20Network%20scanning%20with%20Zenmap/README.md)
 
 **Network Topology:**
@@ -108,13 +115,17 @@ d
 =======
 **Project Documentation:** [View PM5 README](./PM5%20–%20Network%20scanning%20with%20Zenmap/README.md)
 >>>>>>> 9b6c03f (completed week 2.)
+=======
+**Project Documentation:** [View PM5 README](./PM5%20%E2%80%93%20Network%20scanning%20with%20Zenmap/README.md)
+>>>>>>> d4a4aac (completedd week 02)
 
+**Network Topology:** [View Network Topology](./PM5%20%E2%80%93%20Network%20scanning%20with%20Zenmap/topology/network-topology.png)
 
 ---
 
 ## Final Report
 
-The final report consolidates the practical activities performed during Week 02.
+The final report consolidates both practical activities performed during Week 02.
 
 It includes:
 
@@ -139,11 +150,11 @@ week-02/
 ├── Final-Report/
 │   └── README.md
 │
-├── PM1 - Footprinting with multiple Kali tools/
+├── PM1 – Footprinting with multiple Kali tools/
 │   ├── Screenshots/
 │   └── README.md
 │
-├── PM5 - Network scanning with Zenmap/
+├── PM5 – Network scanning with Zenmap/
 │   ├── screenshots/
 │   ├── topology/
 │   │   └── network-topology.png
@@ -182,10 +193,10 @@ No exploitation or unauthorized access was performed.
 
 ---
 
-**Internship Organization:** NetworkWalks
-**Intern:** Lakshya Atulkar
-**Batch:** B084
-**Week:** 02
+**Internship Organization:** NetworkWalks  
+**Intern:** Lakshya Atulkar  
+**Batch:** B084  
+**Week:** 02  
 **Domain:** Cybersecurity & Ethical Hacking
 
 **Status:** Week 02 Documentation Completed
