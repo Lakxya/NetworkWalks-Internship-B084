@@ -52,15 +52,7 @@ The primary focus of this week was website footprinting, reconnaissance, DNS enu
 - Identified ModSecurity (SpiderLabs).
 - Enumerated publicly available DNS records.
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-**Project Documentation:** [View PM1 README](./PM1%20-%20Footprinting%20with%20multiple%20Kali%20tools/README.md)
-=======
-**Project Documentation:** [View PM1 README](./PM1%20–%20Footprinting%20with%20multiple%20Kali%20tools/README.md)
->>>>>>> 9b6c03f (completed week 2.)
-=======
 **Project Documentation:** [View PM1 README](./PM1%20%E2%80%93%20Footprinting%20with%20multiple%20Kali%20tools/README.md)
->>>>>>> d4a4aac (completedd week 02)
 
 ---
 
@@ -76,15 +68,7 @@ The primary focus of this week was website footprinting, reconnaissance, DNS enu
 - Nmap
 - Windows Command Prompt
 - ipconfig
-<<<<<<< HEAD
-<<<<<<< HEAD
 
-=======
-d
->>>>>>> 9b6c03f (completed week 2.)
-=======
-
->>>>>>> d4a4aac (completedd week 02)
 **Key Findings:**
 
 | Parameter | Result |
@@ -106,18 +90,7 @@ d
 - Examined gateway operating system information.
 - Generated and exported network topology.
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-**Project Documentation:** [View PM5 README](./PM5%20-%20Network%20scanning%20with%20Zenmap/README.md)
-
-**Network Topology:**
-
-=======
-**Project Documentation:** [View PM5 README](./PM5%20–%20Network%20scanning%20with%20Zenmap/README.md)
->>>>>>> 9b6c03f (completed week 2.)
-=======
 **Project Documentation:** [View PM5 README](./PM5%20%E2%80%93%20Network%20scanning%20with%20Zenmap/README.md)
->>>>>>> d4a4aac (completedd week 02)
 
 **Network Topology:** [View Network Topology](./PM5%20%E2%80%93%20Network%20scanning%20with%20Zenmap/topology/network-topology.png)
 

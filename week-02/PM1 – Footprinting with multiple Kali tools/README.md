@@ -61,9 +61,6 @@ whois networkwalks.com
 
 **Screenshot:**
 
-
-**Screenshot:**
-
 ![WHOIS Output](Screenshots/01-whois%20networkwalks.png)
 
 ---
@@ -90,8 +87,6 @@ whatweb networkwalks.com
 
 **Screenshot:**
 
-**Screenshot:**
-
 ![WHOIS Output](Screenshots/02-whatweb%20networkwalks.png)
 
 ---
@@ -113,8 +108,6 @@ nslookup networkwalks.com
 - Response Type: Non-authoritative answer
 
 **Outcome:** Successfully resolved the domain name into its corresponding IPv4 address.
-
-**Screenshot:**
 
 **Screenshot:**
 
@@ -143,8 +136,6 @@ curl -I https://networkwalks.com
 
 **Screenshot:**
 
-**Screenshot:**
-
 ![WHOIS Output](Screenshots/04-curl%20networkwalks.png)
 
 ---
@@ -164,8 +155,6 @@ wafw00f networkwalks.com
 - Number of Requests: 2
 
 **Outcome:** Identified a Web Application Firewall associated with the target website.
-
-**Screenshot:**
 
 **Screenshot:**
 
@@ -193,8 +182,6 @@ dnsrecon -d networkwalks.com -t std
 - DNSSEC Query: No answer returned
 
 **Outcome:** Retrieved publicly available DNS records and identified domain-related DNS infrastructure information.
-
-**Screenshot:**
 
 **Screenshot:**
 
