@@ -22,18 +22,9 @@ Each assignment is organized into dedicated folders containing detailed document
 
 ---
 
-## Repository Structure
+| Week 02 | [Footprinting with multiple kali tools](./week-02/PM1%20–%20Footprinting%20with%20multiple%20Kali%20tools/) | Completed |
 
-```text
-Networkwalks/
-│
-├── week-01/
-│   ├── Android-x86 Networking Lab/
-│   ├── Windows 10 VirtualBox Lab/
-│   └── README.md
-│
-└── README.md
-```
+| Week 02 | [Network Scanning with Zenmap](./week-02/PM5%20–%20Network%20scanning%20with%20Zenmap/) | Completed |
 
 ---
 
